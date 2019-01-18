@@ -1,111 +1,118 @@
 $(document).ready(function() {
-    var now = 45;
+    $("label").hide();
+    var now = 15;
     console.log(now);
     var intervalId;
   newGame();
+  ///create variables and arrays
+  var correct  = 0;
+  var incorrect = 0;
+  var correctAnswers= []; 
+  //creating variables that hold references to places in the HTML where we want to display things.
 
-  var correctAnswers = 0;
-var incorrectAnswers = 0;
-var currentQuestion = "";
-var correctAnswer;
-
-
+  var questionsAndAnswers = [ {
+    
+        questionOne: "China’s Terracotta Army depicts the soldiers of what emperor?",
+        answerOne : ["Emperor Qin Shi Huang","Emperor Jiajing","Emperor Taichang","Emperor Li Shimin"]
+        },
+        {
+        questionTwo : "The Rosetta Stone made the translation of Egyptian hieroglyphics possible because a passage of hieroglyphics was also written in what other language?",
+        answerTwo : [ "Latin","Hebrew","Ancient Greek","French"]
+        },
+        {
+        questionThree : "A long hidden cave with Ice Age art covering its walls was discovered in 1940 at which site?",
+        answerThree : ["Cannes","Lascaux","Fontainebleu","Dijon"]  
+        },
+        ];
+///list onclick functions
+$('#restart').on('click', function(){
+    $(this).hide();
+    $("#start").show();
+    $('#timer').empty();
+    $("#restart").show();
+    $("label").hide();
+    now=15;
+    newGame();
+   
+});
+$('#stopGame').on('click', function(){
+    $(this).stop();
+    console.log("this");
+});
+///define fxns
     function newGame () {
         $("#start").on('click', (function () {
             $(this).hide();
-            $('#correctAnswers').empty();
+            $("label").show();
+            $("#questionOne").append(questionsAndAnswers[0].questionOne);
+            $("#questionTwo").append(questionsAndAnswers[1].questionTwo);
+            $("#questionThree").append(questionsAndAnswers[2].questionThree);
+            console.log(questionsAndAnswers[0]);
+            $('#totalCorect').empty();
             $('#wrongAnswers').empty();
-            $('#answersSkipped').empty();
-            intervalId =  setInterval (decrement, 1000); 
-        // right here i think i can make a loop where it i++ on answer One[]     
-    $('#questionOne').append(questionsAndAnswers[0].questionOne);
-    $('#answerOneA').append(questionsAndAnswers[0].answerOne[0]);
-    console.log("why not");
-    $('#answer1b').append(questionsAndAnswers[0].answerOne[1]);
-    $('#answer1c').append(questionsAndAnswers[0].answerOne[2]);
-    $('#answer1d').append(questionsAndAnswers[0].answerOne[3]);
-
-    $('#questionTwo').append(questionsAndAnswers[1].questionTwo);
-    $('#answer2a').append(questionsAndAnswers[1].answerTwo[0]);
-    $('#answer2b').append(questionsAndAnswers[1].answerTwo[1]);
-    $('#answer2c').append(questionsAndAnswers[1].answerTwo[2]);
-    $('#answer2d').append(questionsAndAnswers[1].answerTwo[3]);
-
-    $('#questionThree').append(questionsAndAnswers[2].questionThree);
-    $('#answer3a').append(questionsAndAnswers[2].answerThree[0]);
-    $('#answer3b').append(questionsAndAnswers[2].answerThree[1]);
-    $('#answer3c').append(questionsAndAnswers[2].answerThree[2]);
-    $('#answer3d').append(questionsAndAnswers[2].answerThree[3]);
-
             
+            intervalId =  setInterval (decrement, 1000);
             }));
-            console.log("why dont they append");
-       
+            console.log("hi");
     
-
-
-    $('#restart').on('click', function(){
-        $(this).hide();
-        $("#start").show();
-        console.log("trying to stop timer");
-       
-       
-      
-    });
+    console.log("the newGame fxn is running"); 
 };
-
-
-
-var questionsAndAnswers = [ {
-    
-    questionOne: "China’s Terracotta Army depicts the soldiers of what emperor?",
-    answerOne : ["Emperor Qin Shi Huang","Emperor Jiajing","Emperor Taichang","Emperor Li Shimin"],
-    correctAnswerOne: 0
-    },
-    {
-    questionTwo : "The Rosetta Stone made the translation of Egyptian hieroglyphics possible because a passage of hieroglyphics was also written in what other language?",
-    answerTwo : [ "Latin","Hebrew","Ancient Greek","French"],
-    correctAnswerTwo : 2
-    },
-    {
-    questionThree : "A long hidden cave with Ice Age art covering its walls was discovered in 1940 at which site?",
-    answerThree : ["Cannes","Lascaux","Fontainebleu","Dijon"],
-    correctAnswerThree : 1
-    },
-    ];
-    
     function decrement(){
         now--;
         $("#timer").html("Timer: " + now + " Seconds Left.");
         if (now===0){
-            clearInterval(intervalId);  
-            console.log("hi from other side");
-            
-            endGame();
+            clearInterval(intervalId);       
             alert("Time's Up");
-        }
+            console.log("hi from other side");
+           stop();  
     }
+}
+     function stop() {
+            var answerChosenOne = $('#questionOnea input:checked').val();         
+            var answerChosenTwo = $('#questionTwoa input:checked').val();           
+            var answerChosenThree = $('#questionThreea input:checked').val();
+            correctAnswers.push(answerChosenOne);
+            correctAnswers.push(answerChosenTwo);
+            correctAnswers.push(answerChosenThree);
+            console.log(correctAnswers);
+            if (correctAnswers[0] === 3){
+                    correct++;
+                    console.log(correct);
+            }
+            if (correctAnswers[0]  ===! 3) {
+                incorrect++;
+                console.log(incorrect);
+            }
+            if (correctAnswers[1] === 2){
+                correct++;
+                console.log(correct);
+            }
+            if (correctAnswers[1]  ===! 2) {
+                incorrect++;
+                console.log(incorrect);
+            }
+            console.log(incorrect);
+            if (correctAnswers[2] === 1){
+                correct++;
+        }if (correctAnswers[2]  ===! 1) {
+            incorrect++;
+        }   
+            //display the user totals
+            $("#totalCorrect").append(correct);
+            $("#wrongAnswers").append(incorrect);
+            
+        //  Clears our intervalId
+        //  We just pass the name of the interval
+        //  to the clearInterval function.
+        clearInterval(intervalId);
+            $("#start").show();
+            $('#restart').show();
+            $('form').empty();
+            $("timer").empty();
+      }
+    
+})
 
-    function endGame(){
-        ///need to stop the timer and reset the form
-        $("timer").empty();
-      console.log("help");
-      $("#input").val();
-      console.log(val);
-    }
-    
-    
-    
- 
-    });
+
   
-    
-
-
-
-    
-    
-
-
-
 

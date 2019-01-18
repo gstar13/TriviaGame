@@ -23,17 +23,18 @@
             <div class="col-lg">
         <p id="questionOne">Question1:</p>  
             </div>
-      </div>
+      </div>                                    
     </div>
     <div class="container" class="answers">
         <div class ="row">
             <div class="col-lg">
-                        <form><label for = "answer1a">Emperor Qin Shi Huang</label>
-                                        <input type="radio" name="terracotta" id="answerOneA">a
-                                       <label for = "answer2a">Emperor Jiajing</label>
-                                        <input type="radio" name="terracotta" id="answer1b">b
-                                        <input type="radio" name="terracotta" id="answer1c">c:
-                                        <input type="radio" name="terracotta" id="answer1d">d:
+                        <form id = "questionOnea">
+                                <label>
+                                        <input type="radio" name="terracotta" value = "3" >Emperor Qin Shi Huang</label>
+                                      
+                                        <label><input type="radio" name="terracotta" value = "0" >Emperor Jiajing</label>
+                                        <label><input type="radio" name="terracotta" value = "1" >Emperor Taichang</label>
+                                        <label><input type="radio" name="terracotta" value = "2" >Emperor Li Shimin</label>
                                     </form> 
             </div>
         </div>
@@ -48,11 +49,11 @@
     <div class="container" class="answers">
         <div class ="row">
                 <div class="col-lg">
-                                <form>
-                                                <input type="radio" name="rosetta" id="answer2a">a:
-                                                <input type="radio" name="rosetta" id="answer2b">b:
-                                                <input type="radio" name="rosetta" id="answer2c">c:
-                                                <input type="radio" name="rosetta" id="answer2d">d:
+                                <form id = "questionTwoa">
+                                                <label>   <input type="radio" name="rosetta" value="0">Latin</label>
+                                                <label><input type="radio" name="rosetta" value="1">Hebrew</label>
+                                                <label><input type="radio" name="rosetta" value="2">Ancient Greek</label>
+                                                <label><input type="radio" name="rosetta" value="3">French</label>
                                  </form>    
                 </div>     
         </div>
@@ -67,21 +68,22 @@
       <div class="container" id="answers">
             <div class ="row">
                   <div class="col-lg">
-                                <form>
-                                                <input type="radio"  name="rockart" id="answer3a">a:
-                                                <input type="radio"  name="rockart" id="answer3b">b:
-                                                <input type="radio"  name="rockart" id="answer3c">c:
-                                                <input type="radio"  name="rockart" id="answer3d">d:
+                                <form id = "questionThreea">
+                                                <label><input type="radio"  name="rockart" value="0">Cannes</label>
+                                                <label><input type="radio"  name="rockart" value="1">Lascaux</label>
+                                                <label><input type="radio"  name="rockart" value="2">Fontainebleu</label>
+                                                <label><input type="radio"  name="rockart" value="3">Dijon</label>
                                  </form>      
                 </div>            
             </div>
         </div>   
     
             <div class="col-sm-4" id="questionsCorrectBox">
-              <p id="correctAnswers">Correct Answers: </p>
+              <p id="totalCorrect">Correct Answers: </p>
               <p id="wrongAnswers">Incorrect Answers: </p>
-              <p id="skippedAnswers">Answers Skipped: </p>
+              
               <button id = "restart" class = "btn btn-primary">Click to restart Game</button>
+              <button id = "stopGame" class = "btn btn-primary">Click to Stop Game</button>
             </div>  
 
            
