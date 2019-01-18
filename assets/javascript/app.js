@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("label").hide();
-    var now = 15;
+    var now = 10;
     console.log(now);
     var intervalId;
   newGame();
@@ -31,13 +31,9 @@ $('#restart').on('click', function(){
     $('#timer').empty();
     $("#restart").show();
     $("label").hide();
-    now=15;
+    now=10;
     newGame();
    
-});
-$('#stopGame').on('click', function(){
-    $(this).stop();
-    console.log("this");
 });
 ///define fxns
     function newGame () {
@@ -48,8 +44,7 @@ $('#stopGame').on('click', function(){
             $("#questionTwo").append(questionsAndAnswers[1].questionTwo);
             $("#questionThree").append(questionsAndAnswers[2].questionThree);
             console.log(questionsAndAnswers[0]);
-            $('#totalCorect').empty();
-            $('#wrongAnswers').empty();
+           
             
             intervalId =  setInterval (decrement, 1000);
             }));
@@ -63,11 +58,8 @@ $('#stopGame').on('click', function(){
         if (now===0){
             clearInterval(intervalId);       
             alert("Time's Up");
-            console.log("hi from other side");
-           stop();  
-    }
-}
-     function stop() {
+            
+            
             var answerChosenOne = $('#questionOnea input:checked').val();         
             var answerChosenTwo = $('#questionTwoa input:checked').val();           
             var answerChosenThree = $('#questionThreea input:checked').val();
@@ -75,32 +67,41 @@ $('#stopGame').on('click', function(){
             correctAnswers.push(answerChosenTwo);
             correctAnswers.push(answerChosenThree);
             console.log(correctAnswers);
-            if (correctAnswers[0] === 3){
+            if (answerChosenOne === "3"){
                     correct++;
                     console.log(correct);
             }
-            if (correctAnswers[0]  ===! 3) {
+            if (correctAnswers[0]  !==  "3") {
                 incorrect++;
                 console.log(incorrect);
             }
-            if (correctAnswers[1] === 2){
+            if (correctAnswers[1] === "2"){
                 correct++;
                 console.log(correct);
             }
-            if (correctAnswers[1]  ===! 2) {
+            if (correctAnswers[1]  !== "2") {
                 incorrect++;
                 console.log(incorrect);
             }
             console.log(incorrect);
-            if (correctAnswers[2] === 1){
+            if (correctAnswers[2] === "1"){
                 correct++;
-        }if (correctAnswers[2]  ===! 1) {
+        }if (correctAnswers[2]  !== "1") {
             incorrect++;
+            console.log(incorrect);
         }   
+        //hide the questions
+        $("#questionOne").hide();
+        $("#questionTwo").hide();
+        $("#questionThree").hide();
             //display the user totals
             $("#totalCorrect").append(correct);
             $("#wrongAnswers").append(incorrect);
-            
+           stop();  
+    }
+}
+
+     function stop() {   
         //  Clears our intervalId
         //  We just pass the name of the interval
         //  to the clearInterval function.
