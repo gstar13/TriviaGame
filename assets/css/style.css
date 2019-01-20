@@ -21,11 +21,15 @@
     font-size: 18pt;
 }
 #questionsCorrectBox {
-    padding-left: 520px;
-    padding-right: 100px;
+    padding-left: 200px;
+    padding-right: 200px;
     font-size: 32pt;
     font-family: 'VT323', monospace;
 
+}
+footer {
+    text-align: center;
+    color:purple;
 }
 
 
