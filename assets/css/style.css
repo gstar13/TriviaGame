@@ -23,18 +23,3 @@
 
 
 
-h1 {
-   text-align: center;
-   background-image: url("images/stonehenge.jpeg");
-}
-#questionsCorrectBox {
-    align-content: center;
-    box-shadow: 40px;
-}
-#questionOne
-.answers {
-    text-align: center;
-}
-#buttons {
-    padding: 20px;
-}
