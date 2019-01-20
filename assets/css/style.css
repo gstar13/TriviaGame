@@ -20,9 +20,13 @@
     color: red;
     font-size: 18pt;
 }
+#questionsCorrectBox {
+    padding-left: 520px;
+    padding-right: 100px;
+    font-size: 32pt;
+    font-family: 'VT323', monospace;
 
-<<<<<<< HEAD
+}
 
 
-=======
->>>>>>> 9e9213baeecbc33e74682961ec0585ef3142df3d
+
