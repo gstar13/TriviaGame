@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("label").hide();
     $("#questionsCorrectBox").hide();
-    var now = 10;
+    var now = 30;
     console.log(now);
     var intervalId;
   newGame();
@@ -135,8 +135,7 @@ $(document).ready(function() {
         //  We just pass the name of the interval
         //  to the clearInterval function.
         clearInterval(intervalId);
-            $("#start").hide();
-           
+            $("#start").hide();    
             $('form').empty();
             $("timer").empty();
           
