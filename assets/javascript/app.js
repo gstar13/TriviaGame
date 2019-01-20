@@ -122,7 +122,5 @@ $('#restart').on('click', function(){
       }
     
 })
-
-
   
 
