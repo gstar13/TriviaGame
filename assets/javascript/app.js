@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("label").hide();
-    $("#start").show();
+    $("#questionsCorrectBox").hide();
     var now = 10;
     console.log(now);
     var intervalId;
@@ -25,21 +25,13 @@ $(document).ready(function() {
         answerThree : ["Cannes","Lascaux","Fontainebleu","Dijon"]  
         },
         ];
-///list onclick functions
-$('#restart').on('click', function(){
-    $(this).hide();
-    $("#start").show();
-    $('#timer').empty();
-    $("#restart").show();
-    $("label").hide();
-    now=10;
-    newGame();
-   ////this onclick refers to no button
-});
+
+
 ///define fxns
     function newGame () {
         $("#start").on('click', (function () {
             $(this).hide();
+            
             $("label").show();
             $("#questionOne").append(questionsAndAnswers[0].questionOne);
             $("#questionTwo").append(questionsAndAnswers[1].questionTwo);
@@ -48,12 +40,7 @@ $('#restart').on('click', function(){
            
             
             intervalId =  setInterval (decrement, 1000);
-            }));
-            console.log("hi");
-            clearInterval(intervalId);   
-            console.log(intervalId);
-           
-    
+            }));     
     console.log("the newGame fxn is running"); 
 };
     function decrement(){
@@ -63,11 +50,8 @@ $('#restart').on('click', function(){
         if (now===0){
             clearInterval(intervalId); 
             $('#timer').empty();      
-            alert("Time's Up");
-           
-            $("#start").hide();
             
-            
+        
             var answerChosenOne = $('#questionOnea input:checked').val();         
             var answerChosenTwo = $('#questionTwoa input:checked').val();           
             var answerChosenThree = $('#questionThreea input:checked').val();
@@ -94,16 +78,19 @@ $('#restart').on('click', function(){
             console.log(incorrect);
             if (correctAnswers[2] === "1"){
                 correct++;
-        }if (correctAnswers[2]  !== "1") {
+            }
+            if (correctAnswers[2]  !== "1") {
             incorrect++;
             console.log(incorrect);
+            
         }   
-        newGame();
+        
         //hide the questions
         $("#questionOne").hide();
         $("#questionTwo").hide();
         $("#questionThree").hide();
             //display the user totals
+            $("#questionsCorrectBox").show();
             $("#totalCorrect").append(correct);
             $("#wrongAnswers").append(incorrect);
            stop();  
@@ -115,10 +102,11 @@ $('#restart').on('click', function(){
         //  We just pass the name of the interval
         //  to the clearInterval function.
         clearInterval(intervalId);
-            $("#start").show();
-            $('#restart').show();
+            $("#start").hide();
+           
             $('form').empty();
             $("timer").empty();
+          
       }
     
 })
