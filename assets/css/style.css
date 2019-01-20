@@ -1,3 +1,40 @@
+.jumbotron {
+    background-color: blue;
+    text-decoration-style: dotted;
+    color: red; 
+    font-family: 'ZCOOL KuaiLe', cursive;   
+    font-size: 100px;
+}
+#timer  {
+    text-align: center;
+    font: bolder;
+    font-size: 60px;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+.text {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 24pt;
+    color: blue;
+}
+.text1 {
+    color: red;
+    font-size: 18pt;
+}
+
+
+
+h1 {
+   text-align: center;
+   background-image: url("images/stonehenge.jpeg");
+}
+#questionsCorrectBox {
+    align-content: center;
+    box-shadow: 40px;
+}
+#questionOne
+.answers {
+    text-align: center;
+}
 #buttons {
     padding: 20px;
 }

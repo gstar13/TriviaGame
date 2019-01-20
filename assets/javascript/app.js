@@ -90,6 +90,7 @@ $('#restart').on('click', function(){
             incorrect++;
             console.log(incorrect);
         }   
+        newGame();
         //hide the questions
         $("#questionOne").hide();
         $("#questionTwo").hide();
