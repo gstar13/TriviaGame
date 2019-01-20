@@ -5,6 +5,7 @@ $(document).ready(function() {
     console.log(now);
     var intervalId;
   newGame();
+    
   ///create variables and arrays
   var correct  = 0;
   var incorrect = 0;
@@ -37,7 +38,6 @@ $(document).ready(function() {
     function newGame () {
         $("#start").on('click', (function () {
             $(this).hide();
-            
             $("label").show();
             $("#questionOne").append(questionsAndAnswers[0].questionOne);
             $("#questionTwo").append(questionsAndAnswers[1].questionTwo);
@@ -45,16 +45,14 @@ $(document).ready(function() {
             $("#questionFour").append(questionsAndAnswers[3].questionFour);
             $("#questionFive").append(questionsAndAnswers[4].questionFive);
             console.log(questionsAndAnswers[4]);
-           
-            
             intervalId =  setInterval (decrement, 1000);
             }));     
-    console.log("the newGame fxn is running"); 
+    
 };
     function decrement(){
         now--;
         $("#timer").html("Timer: " + now + " Seconds Left.");
-        console.log("the decrement fxn is about to run"); 
+        
         if (now===0){
             clearInterval(intervalId); 
             $('#timer').empty();      
