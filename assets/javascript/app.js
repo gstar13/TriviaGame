@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $("label").hide();
+    $("#start").show();
     var now = 10;
     console.log(now);
     var intervalId;
@@ -33,7 +34,7 @@ $('#restart').on('click', function(){
     $("label").hide();
     now=10;
     newGame();
-   
+   ////this onclick refers to no button
 });
 ///define fxns
     function newGame () {
@@ -49,15 +50,22 @@ $('#restart').on('click', function(){
             intervalId =  setInterval (decrement, 1000);
             }));
             console.log("hi");
+            clearInterval(intervalId);   
+            console.log(intervalId);
+           
     
     console.log("the newGame fxn is running"); 
 };
     function decrement(){
         now--;
         $("#timer").html("Timer: " + now + " Seconds Left.");
+        console.log("the decrement fxn is about to run"); 
         if (now===0){
-            clearInterval(intervalId);       
+            clearInterval(intervalId); 
+            $('#timer').empty();      
             alert("Time's Up");
+           
+            $("#start").hide();
             
             
             var answerChosenOne = $('#questionOnea input:checked').val();         
@@ -114,7 +122,5 @@ $('#restart').on('click', function(){
       }
     
 })
-
-
   
 
